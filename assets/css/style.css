@@ -105,7 +105,7 @@ main {
 }
 
 .nav-links a:hover {
-  color: #f4e4a6;
+  color: #f4e4a6 !important;
 }
 .nav-links a.active {
   color: #f4e4a6;
