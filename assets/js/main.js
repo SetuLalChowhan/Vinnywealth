@@ -34,18 +34,19 @@ document.addEventListener("click", (event) => {
   }
 });
 // Select all navigation links
-const navLinks1 = document.querySelectorAll(".nav-link");
+const navLinks1 = document.querySelectorAll('.nav-link');
 
 // Add click event listener to each link
-navLinks1.forEach((link) => {
-  link.addEventListener("click", function () {
+navLinks1.forEach(link => {
+  link.addEventListener('click', function () {
     // Remove active class from all links
-    navLinks1.forEach((nav) => nav.classList.remove("active"));
+    navLinks1.forEach(nav => nav.classList.remove('active'));
     // Add active class to the clicked link
-    this.classList.add("active");
+    this.classList.add('active');
     navLinks.classList.toggle("active");
   });
 });
+
 
 const marqueeContainers = document.querySelectorAll(".marquee-content");
 
