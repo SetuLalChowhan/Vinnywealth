@@ -28,13 +28,12 @@
     <link rel="stylesheet" href="./assets/css/responsive.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script>
-    (function() {
-      // Initialize EmailJS with your User ID
-      emailjs.init("qM7G8IbvdD6gipEQk"); // Replace with your EmailJS user ID
-    })();
-  </script>
-
+    <script>
+      (function () {
+        // Initialize EmailJS with your User ID
+        emailjs.init("qM7G8IbvdD6gipEQk"); // Replace with your EmailJS user ID
+      })();
+    </script>
   </head>
 
   <body>
@@ -385,14 +384,23 @@
           <a href="# " class="nav-link">Home</a>
 
           <a href="#service" class="nav-link">Our Service</a>
-
         </nav>
 
         <!-- button -->
 
         <div class="all-btns">
           <div class="btns">
-            <a style="width: 220px; font-size: 16px; padding-left: 16px; padding-right: 16px; " href="#bookAService" class="btn">Book an Appointment</a>
+            <a
+              style="
+                width: 220px;
+                font-size: 16px;
+                padding-left: 16px;
+                padding-right: 16px;
+              "
+              href="#bookAService"
+              class="btn"
+              >Book an Appointment</a
+            >
           </div>
 
           <div class="hamburger" id="toogle_button">
@@ -748,11 +756,21 @@
           <a href="#" class="nav-link">Home</a>
 
           <a href="#service" class="nav-link">Our Service</a>
-          
         </nav>
 
         <div class="btns2">
-          <a style="width: 100%; color: #fff !important; font-size: 13px; padding-left: 8px; padding-right: 8px; " href="#bookAService" class="btn nav-link">Book an Appointment</a>
+          <a
+            style="
+              width: 100%;
+              color: #fff !important;
+              font-size: 13px;
+              padding-left: 8px;
+              padding-right: 8px;
+            "
+            href="#bookAService"
+            class="btn nav-link"
+            >Book an Appointment</a
+          >
         </div>
       </div>
     </header>
@@ -781,7 +799,9 @@
               </p>
 
               <div class="banner-btns">
-                <a href="#bookAService" class="big-btn">Schedule A Consultant</a>
+                <a href="#bookAService" class="big-btn"
+                  >Schedule A Consultant</a
+                >
                 <p class="banner-pera2">
                   <span class="percent">100%</span> Satisfaction Guaranteed
                 </p>
@@ -1367,7 +1387,6 @@
                   </div>
                 </div>
               </div>
-             
             </div>
           </div>
         </div>
@@ -1410,7 +1429,11 @@
                 </p>
               </div>
 
-              <form id="booking-form" onsubmit="sendEmail(event)" class="form-section">
+              <form
+                id="booking-form"
+                onsubmit="sendEmail(event)"
+                class="form-section"
+              >
                 <div class="form-field">
                   <label for="name"> Name </label>
                   <div class="input-box">
@@ -1457,7 +1480,9 @@
                           Select a Service
                         </option>
                         <option value="Consulting">Consulting</option>
-                        <option value="Financial Planning">Financial Planning</option>
+                        <option value="Financial Planning">
+                          Financial Planning
+                        </option>
                         <option value="Tax Preparation">Tax Preparation</option>
                       </select>
                     </div>
@@ -2116,7 +2141,7 @@
               <div class="info-footer">
                 <p>Help</p>
 
-               <div class="footer-links">
+                <div class="footer-links">
                   <a href="#">Customer Support</a>
                   <a href="#">Terms & Conditions</a>
                   <a href="#">Privacy Policy</a>
@@ -2124,19 +2149,20 @@
               </div>
 
               <div class="info-footer">
-                  <a href="#bookAService" class="subscribe_btn">Book an Appointment</a>
-                </div>
+                <a href="#bookAService" class="subscribe_btn"
+                  >Book an Appointment</a
+                >
               </div>
             </div>
           </div>
-
-          <div class="break-line"></div>
-
-          <p class="copywrite">
-            © Copyright 2022, All Rights Reserved by ClarityUI
-          </p>
         </div>
-      
+
+        <div class="break-line"></div>
+
+        <p class="copywrite">
+          © Copyright 2022, All Rights Reserved by ClarityUI
+        </p>
+      </div>
     </footer>
     <!-- footer area ends -->
 
@@ -2154,41 +2180,41 @@
       });
     </script>
 
-<script>
-  const form  = document.getElementById('booking-form');
-  function sendEmail(event) {
-    event.preventDefault(); // Prevent form submission refresh
+    <script>
+      const form = document.getElementById("booking-form");
+      function sendEmail(event) {
+        event.preventDefault(); // Prevent form submission refresh
 
-    // Collect form data
-    const formData = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      phone: document.getElementById("phone").value,
-      service: document.getElementById("services").value,
-      date: document.getElementById("date").value,
-      time: document.getElementById("time").value,
-    };
+        // Collect form data
+        const formData = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          service: document.getElementById("services").value,
+          date: document.getElementById("date").value,
+          time: document.getElementById("time").value,
+        };
 
-    console.log(formData)
+        console.log(formData);
 
-    // Use EmailJS to send the email
-    if(formData.date){
-      emailjs
-      .send("service_f7qvq8n", "template_zmxu698", formData)
-      .then(
-        function(response) {
-          alert("Your appointment has been successfully scheduled!");
-          form.reset();
-        },
-        function(error) {
-          alert("There was an error scheduling your appointment. Please try again.");
-          console.error("FAILED...", error);
+        // Use EmailJS to send the email
+        if (formData.date) {
+          emailjs.send("service_f7qvq8n", "template_zmxu698", formData).then(
+            function (response) {
+              alert("Your appointment has been successfully scheduled!");
+              form.reset();
+            },
+            function (error) {
+              alert(
+                "There was an error scheduling your appointment. Please try again."
+              );
+              console.error("FAILED...", error);
+            }
+          );
+        } else {
+          alert("Please Select a Date");
         }
-      );
-    }else {
-      alert('Please Select a Date');
-    }
-  }
-</script>
+      }
+    </script>
   </body>
 </html>
