@@ -26,6 +26,15 @@
     <link rel="stylesheet" href="./assets/css/helper.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/responsive.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      // Initialize EmailJS with your User ID
+      emailjs.init("qM7G8IbvdD6gipEQk"); // Replace with your EmailJS user ID
+    })();
+  </script>
+
   </head>
 
   <body>
@@ -373,19 +382,17 @@
         <!-- nav links -->
 
         <nav class="nav-links">
-          <a href="# " class="active nav-link">Home</a>
+          <a href="# " class="nav-link">Home</a>
 
           <a href="#service" class="nav-link">Our Service</a>
 
-          <a href="#bookAService" class="nav-link">Book an Appointment</a>
         </nav>
 
         <!-- button -->
 
         <div class="all-btns">
           <div class="btns">
-            <button class="btn">Log in</button>
-            <button class="btn">Sign up</button>
+            <a style="width: 220px; font-size: 16px; padding-left: 16px; padding-right: 16px; " href="#bookAService" class="btn">Book an Appointment</a>
           </div>
 
           <div class="hamburger" id="toogle_button">
@@ -738,16 +745,14 @@
         </div>
 
         <nav class="mobile-nav-links">
-          <a href="#" class="active nav-link">Home</a>
+          <a href="#" class="nav-link">Home</a>
 
           <a href="#service" class="nav-link">Our Service</a>
           
-          <a href="#bookAService" class="nav-link">Book an Appointment</a>
         </nav>
 
         <div class="btns2">
-          <button class="btn">Log in</button>
-          <button class="btn">Sign up</button>
+          <a style="width: 100%; color: #fff !important; font-size: 13px; padding-left: 8px; padding-right: 8px; " href="#bookAService" class="btn nav-link">Book an Appointment</a>
         </div>
       </div>
     </header>
@@ -1405,7 +1410,7 @@
                 </p>
               </div>
 
-              <form class="form-section">
+              <form id="booking-form" onsubmit="sendEmail(event)" class="form-section">
                 <div class="form-field">
                   <label for="name"> Name </label>
                   <div class="input-box">
@@ -1451,10 +1456,9 @@
                         <option value="" disabled selected>
                           Select a Service
                         </option>
-                        <option value="service1">Service 1</option>
-                        <option value="service2">Service 2</option>
-                        <option value="service3">Service 3</option>
-                        <option value="service4">Service 4</option>
+                        <option value="Consulting">Consulting</option>
+                        <option value="Financial Planning">Financial Planning</option>
+                        <option value="Tax Preparation">Tax Preparation</option>
                       </select>
                     </div>
                   </div>
@@ -1462,7 +1466,7 @@
                     <label for="date">Choose date</label>
                     <div class="input-box2">
                       <input
-                        placeholder="10/09/25"
+                        placeholder="Select Date"
                         type="text"
                         id="date"
                         name="date"
@@ -2149,5 +2153,42 @@
         disableMobile: true, // For better mobile experience
       });
     </script>
+
+<script>
+  const form  = document.getElementById('booking-form');
+  function sendEmail(event) {
+    event.preventDefault(); // Prevent form submission refresh
+
+    // Collect form data
+    const formData = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      service: document.getElementById("services").value,
+      date: document.getElementById("date").value,
+      time: document.getElementById("time").value,
+    };
+
+    console.log(formData)
+
+    // Use EmailJS to send the email
+    if(formData.date){
+      emailjs
+      .send("service_f7qvq8n", "template_zmxu698", formData)
+      .then(
+        function(response) {
+          alert("Your appointment has been successfully scheduled!");
+          form.reset();
+        },
+        function(error) {
+          alert("There was an error scheduling your appointment. Please try again.");
+          console.error("FAILED...", error);
+        }
+      );
+    }else {
+      alert('Please Select a Date');
+    }
+  }
+</script>
   </body>
 </html>

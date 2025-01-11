@@ -84,7 +84,7 @@ main {
 }
 
 .nav-links a {
-  color: #c1c1c1;
+  color: #c1c1c1 !important;
   font-size: 18px;
   font-family: "Poppins", serif;
   position: relative;
